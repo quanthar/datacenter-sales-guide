@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0e17">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>ЦОД & Cloud Sales Academy | Интерактивный интерактивный учебник B2B</title>
+  <meta name="description" content="Интерактивный учебник и тренажер для менеджеров по B2B-продажам: ЦОД, Colocation, IaaS, PaaS, SaaS, AI Inference, Kubernetes, TCO калькулятор и отработка возражений.">
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       Global Top Header
+       ======================================================================== -->
+  <header class="header">
+    <div class="brand">
+      <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Открыть меню">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+      </button>
+      <div class="brand-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect><rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>
+      </div>
+      <div class="brand-info">
+        <h1>DC & CLOUD SALES ACADEMY</h1>
+        <span>Интерактивный гид по ИТ-инфраструктуре для B2B</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs (Study Modes) -->
+    <nav class="nav-modes" aria-label="Режимы обучения">
+      <button class="nav-tab-btn active" data-mode="guide" id="mode-btn-guide">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6 6h10"></path><path d="M6 10h10"></path></svg>
+        📖 Учебник
+      </button>
+      <button class="nav-tab-btn" data-mode="flashcards" id="mode-btn-flashcards">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="m9 8 6 4-6 4Z"></path></svg>
+        🎴 Флеш-карточки
+      </button>
+      <button class="nav-tab-btn" data-mode="objections" id="mode-btn-objections">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        🥊 Возражения
+      </button>
+      <button class="nav-tab-btn" data-mode="cheatsheet" id="mode-btn-cheatsheet">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        ⚡ Шпаргалка на звонок
+      </button>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <button class="search-trigger-btn" id="search-trigger" title="Поиск по терминам и материалам">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <span>Поиск по гайду</span>
+        <kbd>Ctrl+K</kbd>
+      </button>
+      <button class="icon-btn" id="theme-toggle-btn" title="Сменить тему оформления" aria-label="Сменить тему">
+        <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Filled by JS -->
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Main App Layout: Sidebar + Content
+       ======================================================================== -->
+  <div class="app-container">
+
+    <!-- Left Sticky Sidebar -->
+    <aside class="sidebar" id="app-sidebar">
+      
+      <!-- Mobile Close Row -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+        <span style="font-weight: 700; font-size: 0.85rem; color: var(--text-primary);" class="mobile-menu-toggle">Главы курса</span>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Закрыть меню">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Progress Widget -->
+      <div class="progress-widget">
+        <div class="progress-header">
+          <span class="progress-title">Твой прогресс</span>
+          <span class="progress-pct" id="progress-pct-val">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+        <div class="progress-stats">
+          <span id="progress-stats-val">0 из 9 тем</span>
+          <span>Курс: B2B ЦОД</span>
+        </div>
+      </div>
+
+      <!-- Table of Contents -->
+      <nav class="toc-nav" aria-label="Оглавление курса">
+        <div class="toc-heading">Содержание программы</div>
+
+        <a href="#sec-1" class="toc-item">
+          <span>1. Пирамида облаков</span>
+          <button class="toc-check" data-section="sec-1" title="Отметить прочитанным" aria-label="Отметить 1 главу"></button>
+        </a>
+        <a href="#sec-2" class="toc-item">
+          <span>2. Colocation в ЦОД</span>
+          <button class="toc-check" data-section="sec-2" title="Отметить прочитанным" aria-label="Отметить 2 главу"></button>
+        </a>
+        <a href="#sec-3" class="toc-item">
+          <span>3. AI Inference & GPU</span>
+          <button class="toc-check" data-section="sec-3" title="Отметить прочитанным" aria-label="Отметить 3 главу"></button>
+        </a>
+        <a href="#sec-4" class="toc-item">
+          <span>4. Kubernetes (K8s)</span>
+          <button class="toc-check" data-section="sec-4" title="Отметить прочитанным" aria-label="Отметить 4 главу"></button>
+        </a>
+        <a href="#sec-5" class="toc-item">
+          <span>5. Хранение & Бэкапы</span>
+          <button class="toc-check" data-section="sec-5" title="Отметить прочитанным" aria-label="Отметить 5 главу"></button>
+        </a>
+        <a href="#sec-6" class="toc-item">
+          <span>6. TCO калькулятор</span>
+          <button class="toc-check" data-section="sec-6" title="Отметить прочитанным" aria-label="Отметить 6 главу"></button>
+        </a>
+        <a href="#sec-7" class="toc-item">
+          <span>7. Скрипты & Возражения</span>
+          <button class="toc-check" data-section="sec-7" title="Отметить прочитанным" aria-label="Отметить 7 главу"></button>
+        </a>
+        <a href="#sec-8" class="toc-item">
+          <span>8. Чек-лист лида</span>
+          <button class="toc-check" data-section="sec-8" title="Отметить прочитанным" aria-label="Отметить 8 главу"></button>
+        </a>
+        <a href="#sec-9" class="toc-item">
+          <span>9. Роадмап обучения</span>
+          <button class="toc-check" data-section="sec-9" title="Отметить прочитанным" aria-label="Отметить 9 главу"></button>
+        </a>
+      </nav>
+
+      <!-- Sidebar Pro Tip -->
+      <div class="sidebar-callout">
+        <h4>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"></path><path d="m17 5-5-3-5 3"></path><path d="m17 19-5 3-5-3"></path><path d="M2 12h20"></path></svg>
+          Совет сейлу
+        </h4>
+        <p style="font-size: 0.775rem; margin: 0; color: var(--text-secondary);">
+          Не нужно быть инженером. Твоя задача — задать правильные вопросы, посчитать TCO и передать лида пресейлу.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Sidebar Backdrop for Mobile -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Main Content Stream -->
+    <main class="main-content" id="main-content-region">
+
+      <!-- ====================================================================
+           MODE 1: INTERACTIVE GUIDE (УЧЕБНИК)
+           ==================================================================== -->
+      <div class="tab-panel active" id="tab-guide">
+        
+        <!-- Hero Section -->
+        <header class="hero-banner">
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            B2B Продажи • ИТ-Инфраструктура
+          </div>
+          <h1>Как продавать ЦОД, облачные и ИТ-решения</h1>
+          <p class="hero-lead">
+            Практический интерактивный гайд для менеджеров по B2B-продажам: переход от классических телеком-услуг к высокомаржинальным продуктам дата-центров, расчету TCO и экспертным переговорам с CTO и CISO.
+          </p>
+
+          <div class="hero-meta-grid">
+            <div class="hero-meta-card">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+              <div>
+                <strong>Для кого</strong>
+                <span>B2B Сейлы, КАМы, Пресейлы</span>
+              </div>
+            </div>
+            <div class="hero-meta-card">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path><circle cx="12" cy="12" r="4"></circle></svg>
+              <div>
+                <strong>Цель курса</strong>
+                <span>Говорить на языке выгод и цифр</span>
+              </div>
+            </div>
+            <div class="hero-meta-card">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+              <div>
+                <strong>Главный навык</strong>
+                <span>Защита TCO и закрытие с первого звонка</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- ==================================================================
+             SECTION 1: ПИРАМИДА ОБЛАЧНЫХ СЕРВИСОВ
+             ================================================================== -->
+        <section class="guide-section" id="sec-1">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">1</div>
+              <div>
+                <h2>Пирамида облачных сервисов</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">Разделение ответственности: On-Premise → Colocation → IaaS → PaaS → SaaS</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-1" id="mark-btn-sec-1">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <p>
+            Главный барьер клиента в разговоре про облака — непонимание, за что именно он платит и кто отвечает за стабильность. Лучший способ запомнить и объяснить это заказчику — <strong>знаменитая аналогия с пиццей</strong>:
+          </p>
+
+          <!-- Interactive Pizza Analogy Component -->
+          <div class="pizza-interactive">
+            <div class="pizza-toggle-tabs">
+              <button class="pizza-tab" data-model="onprem">🏠 On-Premise</button>
+              <button class="pizza-tab active" data-model="colo">🏢 Colocation (ЦОД)</button>
+              <button class="pizza-tab" data-model="iaas">☁️ IaaS (Виртуалки)</button>
+              <button class="pizza-tab" data-model="paas">⚙️ PaaS (Платформа)</button>
+              <button class="pizza-tab" data-model="saas">📦 SaaS (Готовое ПО)</button>
+            </div>
+            
+            <div id="pizza-dynamic-content">
+              <!-- Dynamically populated by JS initPizzaAnalogy() -->
+            </div>
+          </div>
+
+          <!-- Comprehensive Comparison Table -->
+          <h3>Сводная таблица для сейла: примеры продуктов и клиенты</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Модель</th>
+                  <th>Что это простыми словами</th>
+                  <th>Примеры на рынке</th>
+                  <th>Типичный клиент</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Colocation</strong></td>
+                  <td>Своё оборудование в арендованной стойке ЦОД</td>
+                  <td>Selectel, DataLine, Т2 ЦОД, Linxdatacenter</td>
+                  <td>Банки, финтех, зрелый e-com, компании со своими серверами</td>
+                </tr>
+                <tr>
+                  <td><strong>IaaS</strong></td>
+                  <td>Аренда виртуальных серверов (vCPU, RAM, SSD)</td>
+                  <td>Yandex Cloud Compute, VK Cloud, Selectel Cloud</td>
+                  <td>Растущие компании, веб-сервисы, разработчики ПО</td>
+                </tr>
+                <tr>
+                  <td><strong>PaaS</strong></td>
+                  <td>Готовая среда (Managed PostgreSQL, Kubernetes, S3)</td>
+                  <td>Managed Databases, Cloud Functions, Container Registry</td>
+                  <td>DevOps-инженеры, команды продуктовой разработки</td>
+                </tr>
+                <tr>
+                  <td><strong>SaaS</strong></td>
+                  <td>Готовое веб-приложение по подписке (в браузере)</td>
+                  <td>amoCRM, Битрикс24, 1С:Фреш, Яндекс 360</td>
+                  <td>Любой бизнес (бухгалтерия, продажи, маркетинг)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pitch Scripts with Copy Buttons -->
+          <h3>Готовые речевые модули для разговора с клиентом</h3>
+          
+          <div class="pitch-card">
+            <div class="pitch-card-header">
+              <div class="pitch-badge">💬 Как просто объяснить Colocation</div>
+              <button class="copy-btn" title="Скопировать фразу">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Копировать
+              </button>
+            </div>
+            <div class="pitch-quote">
+              «Colocation — это когда вы привозите свой сервер к нам в дата-центр. Мы обеспечиваем непрерывное электричество по двум независимым вводам, прецизионное охлаждение, магистральный интернет и вооруженную охрану. При этом вы управляете железом и данными сами — никто посторонний доступа к ним не имеет.»
+            </div>
+          </div>
+
+          <div class="pitch-card">
+            <div class="pitch-card-header">
+              <div class="pitch-badge">💬 Как просто объяснить IaaS</div>
+              <button class="copy-btn" title="Скопировать фразу">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Копировать
+              </button>
+            </div>
+            <div class="pitch-quote">
+              «IaaS — это когда мы даём вам виртуальный сервер нужной мощности. Никакого физического оборудования покупать и ждать поставки месяцами не нужно. Включили за 5 минут — работаете, выключили — не платите ни рубля лишнего.»
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 2: COLOCATION
+             ================================================================== -->
+        <section class="guide-section" id="sec-2">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">2</div>
+              <div>
+                <h2>Colocation: размещение серверов в ЦОД</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">Инфраструктура, единицы измерения, целевая аудитория и отработка болей</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-2" id="mark-btn-sec-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <p>
+            <strong>Colocation (колокация)</strong> — фундамент продаж услуг ЦОД. Это услуга аренды защищенного технологического пространства (стойки или поюнитно) для размещения оборудования клиента.
+          </p>
+
+          <!-- Interactive Rack Visualizer -->
+          <div class="rack-visualizer">
+            <div class="rack-frame" title="Серверная стойка 42U">
+              <div class="rack-unit active"><span class="rack-led"></span><span style="font-size: 8px; color: #a5b4fc;">42U</span></div>
+              <div class="rack-unit"><span class="rack-led"></span></div>
+              <div class="rack-unit active"><span class="rack-led"></span></div>
+              <div class="rack-unit"><span class="rack-led"></span></div>
+              <div class="rack-unit active"><span class="rack-led"></span></div>
+              <div class="rack-unit"><span class="rack-led"></span></div>
+              <div class="rack-unit active"><span class="rack-led"></span></div>
+              <div class="rack-unit"><span class="rack-led"></span></div>
+              <div class="rack-unit active"><span class="rack-led"></span></div>
+              <div class="rack-unit"><span class="rack-led"></span></div>
+              <div class="rack-unit active"><span class="rack-led"></span><span style="font-size: 8px; color: #a5b4fc;">1U</span></div>
+            </div>
+            <div class="rack-explanation">
+              <h3 style="margin-bottom: 0.5rem; color: var(--accent-secondary);">Анатомия серверного стойко-места (42U)</h3>
+              <p style="font-size: 0.875rem;">
+                Клиент платит за <strong>размер в юнитах (U)</strong>, выделенную <strong>электрическую мощность (кВт)</strong> и <strong>интернет-канал</strong>. Если у клиента 1–3 сервера — продаем поюнитно (1U/2U). Если крупный парк — целые стойки (42U) или даже выделенные изолированные автозалы (клетка).
+              </p>
+              <div class="rack-stats-grid">
+                <div class="rack-stat-pill">
+                  <span>Высота 1U</span>
+                  <strong>44.45 мм (4.4 см)</strong>
+                </div>
+                <div class="rack-stat-pill">
+                  <span>Вместимость стойки</span>
+                  <strong>42U (до 20 серверов)</strong>
+                </div>
+                <div class="rack-stat-pill">
+                  <span>Мощность на стойку</span>
+                  <strong>от 3 до 10+ кВт</strong>
+                </div>
+                <div class="rack-stat-pill">
+                  <span>Стандарт надёжности</span>
+                  <strong>Tier III (99.982%)</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dictionary: Units & Terms -->
+          <h3>Словарь сейла: говори с инженерами на одном языке</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Термин</th>
+                  <th>Что это значит для бизнеса</th>
+                  <th>Практический пример</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1U (Юнит)</strong></td>
+                  <td>Единица высоты слота в стойке шириной 19 дюймов (4.4 см)</td>
+                  <td>Компактный сервер = 1U или 2U. Большое хранилище (СХД) = 4U.</td>
+                </tr>
+                <tr>
+                  <td><strong>кВт (Киловатты)</strong></td>
+                  <td>Лимит потребляемой электроэнергии на стойку</td>
+                  <td>Обычная стойка берет 3–5 кВт. Стойка с AI/GPU серверами требует 10–15 кВт.</td>
+                </tr>
+                <tr>
+                  <td><strong>Uptime & SLA</strong></td>
+                  <td>Процент времени бесперебойной работы ЦОД в год</td>
+                  <td>99.95% = простой не более 4.4 ч/год. 99.98% = не более 1.6 ч/год.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tier I–IV</strong></td>
+                  <td>Международный стандарт надёжности Uptime Institute</td>
+                  <td><strong>Tier III</strong> — золотой стандарт (ремонт без остановки, 2N резерв питания).</td>
+                </tr>
+                <tr>
+                  <td><strong>Cross-connect</strong></td>
+                  <td>Прямой кабель между стойками разных клиентов внутри ЦОД</td>
+                  <td>Прямая связь с биржей или банком с задержкой &lt; 1 мс.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Target Industries -->
+          <h3>Кому продавать Colocation (Целевые сегменты)</h3>
+          <div class="card-grid-3">
+            <div class="interactive-card">
+              <div class="card-icon-wrap">🏦</div>
+              <h4>Банки и Финтех</h4>
+              <p style="font-size: 0.85rem;">Жёсткие регуляторные требования ЦБ РФ, хранение данных внутри РФ, аудит безопасности (ГОСТ 57580, PCI DSS).</p>
+            </div>
+            <div class="interactive-card">
+              <div class="card-icon-wrap">🏭</div>
+              <h4>Производство и Заводы</h4>
+              <p style="font-size: 0.85rem;">Уже закуплен собственный солидный парк серверов для ERP (1С / SAP). В цехах пыльно и нет условий для охлаждения.</p>
+            </div>
+            <div class="interactive-card">
+              <div class="card-icon-wrap">🏥</div>
+              <h4>Медицина и Фарма</h4>
+              <p style="font-size: 0.85rem;">Персональные медицинские данные (ФЗ-152, УЗ-1). Необходимость гарантировать сохранность электронных карт пациентов.</p>
+            </div>
+            <div class="interactive-card">
+              <div class="card-icon-wrap">🎮</div>
+              <h4>Геймдев и Медиа</h4>
+              <p style="font-size: 0.85rem;">Критична минимальная сетевая задержка (latency) к магистральным каналам и защита от массированных DDoS-атак.</p>
+            </div>
+            <div class="interactive-card">
+              <div class="card-icon-wrap">💻</div>
+              <h4>ИТ-компании и Интеграторы</h4>
+              <p style="font-size: 0.85rem;">Размещают собственные платформы и перепродают услуги своим конечным B2B-заказчикам.</p>
+            </div>
+            <div class="interactive-card">
+              <div class="card-icon-wrap">🛒</div>
+              <h4>Крупный E-Commerce</h4>
+              <p style="font-size: 0.85rem;">Стабильные огромные базы заказов, где час простоя в Чёрную Пятницу стоит десятки миллионов рублей.</p>
+            </div>
+          </div>
+
+          <!-- Arguments for Real Pains -->
+          <h3>Матрица аргументов: как закрывать типовые боли клиентов</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 40%;">Боль / ситуация клиента</th>
+                  <th>Твой убойный аргумент сейла</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>«У нас серверная в подвале, зимой прорвало трубу / затопило»</strong></td>
+                  <td>«В Tier III ЦОД нет водопроводных труб над залами, гидроизоляция периметра, газовое пожаротушение, датчики протечек и страхование ответственности.»</td>
+                </tr>
+                <tr>
+                  <td><strong>«Электричество дорожает, бытовой кондиционер шумит и ломается»</strong></td>
+                  <td>«В ЦОД тариф за кВт ниже за счет оптового энергопотребления, а промышленный прецизионный климат-контроль N+1 уже включен в стоимость.»</td>
+                </tr>
+                <tr>
+                  <td><strong>«Наш системный администратор уволился, следить некому»</strong></td>
+                  <td>«ЦОД обеспечивает круглосуточный мониторинг 24/7/365 и услугу 'удаленные руки' (Smart Hands) — дежурный инженер заменит диск или кабель по заявке за 15 минут.»</td>
+                </tr>
+                <tr>
+                  <td><strong>«Бизнес расширяется, в серверной больше нет места и мощности»</strong></td>
+                  <td>«В ЦОД вы можете добавить вторую и третью стойку за 3 рабочих дня без капитального ремонта и многомиллионных инвестиций в здание.»</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 3: AI INFERENCE
+             ================================================================== -->
+        <section class="guide-section" id="sec-3">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">3</div>
+              <div>
+                <h2>AI Inference: продажа вычислений для ИИ</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">Разница между Training и Inference, аренда GPU-as-a-Service, тренды рынка</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-3" id="mark-btn-sec-3">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <p>
+            Искусственный интеллект — самый растущий драйвер спроса на дата-центры в 2024–2026 годах. Чтобы продавать ИИ-мощности, сейлу критически важно понимать базовую терминологию:
+          </p>
+
+          <div class="card-grid-2">
+            <div class="interactive-card">
+              <div class="card-icon-wrap" style="color: var(--accent-warning);">🏋️‍♂️</div>
+              <h4>Training (Обучение нейросети)</h4>
+              <p style="font-size: 0.85rem;">
+                Создание модели «с нуля» на терабайтах данных. Требует сотен GPU-кластеров, месяцев работы и бюджетов от $10M–$100M. Обучение делают единицы (Яндекс, Сбер, OpenAI).
+              </p>
+            </div>
+            <div class="interactive-card">
+              <div class="card-icon-wrap" style="color: var(--accent-success);">⚡</div>
+              <h4>Inference (Инференс — применение ИИ)</h4>
+              <p style="font-size: 0.85rem;">
+                <strong>Запуск уже готовой обученной модели</strong> для ответов на запросы клиентов. Каждый раз, когда юзер пишет вопрос боту или камера распознает лицо — это <em>inference</em>.
+              </p>
+            </div>
+          </div>
+
+          <h3>Почему GPU-as-a-Service покупают прямо сейчас?</h3>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+            <li><strong>Безопасность данных:</strong> бизнес боится передавать коммерческую тайну в зарубежный ChatGPT. Нужны локальные LLM (Llama, Mistral, Saiga) внутри защищенного контура в РФ.</li>
+            <li><strong>Астрономическая стоимость GPU:</strong> один сервер с NVIDIA H100 или L40S стоит от 5 до 8 млн ₽, плюс дефицит поставок.</li>
+            <li><strong>Питание и охлаждение:</strong> GPU-сервер «жарит» как электрочайник (до 10 кВт тепла на стойку) — офисная серверная сгорит за пару часов.</li>
+            <li><strong>GPU-as-a-Service:</strong> клиент арендует нужные мощности от 150 000 ₽/мес, масштабируя их вверх при наплыве задач и отключая, когда модель простаивает.</li>
+          </ul>
+
+          <div class="pitch-card">
+            <div class="pitch-card-header">
+              <div class="pitch-badge">💬 Речевой модуль продажи GPU / AI Inference</div>
+              <button class="copy-btn" title="Скопировать фразу">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Копировать
+              </button>
+            </div>
+            <div class="pitch-quote">
+              «У вас в компании уже используются ИИ-ассистенты, скоринг или компьютерное зрение? Чтобы они работали быстро и без утечки клиентских данных, нужны специализированные GPU-серверы. Покупать их сейчас — это от 5–7 млн рублей замороженного капитала и месяцы ожидания логистики. Мы предлагаем аренду готовых GPU-кластеров в ЦОД от 150 000 руб./мес. Вы платите только за реальное время работы и тестируете гипотезы без инвестиционных рисков.»
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 4: KUBERNETES (K8S)
+             ================================================================== -->
+        <section class="guide-section" id="sec-4">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">4</div>
+              <div>
+                <h2>Kubernetes (K8s): оркестрация контейнеров</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">Объяснение без технических терминов, ценность Managed K8s для бизнеса</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-4" id="mark-btn-sec-4">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <div class="card-grid-2">
+            <div class="interactive-card">
+              <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🧳 Что такое Контейнер?</h4>
+              <p style="font-size: 0.875rem;">
+                Это изолированный «чемодан», куда программисты упаковали код приложения вместе со всеми библиотеками и настройками. Чемодан открывается на любом сервере одинаково: ничего не ломается из-за чужих обновлений.
+              </p>
+            </div>
+            <div class="interactive-card">
+              <h4 style="color: var(--accent-secondary); margin-bottom: 0.5rem;">🕹️ Что такое Kubernetes (K8s)?</h4>
+              <p style="font-size: 0.875rem;">
+                Это «умный диспетчер» над тысячами чемоданов. Если чемодан упал с ошибкой — K8s мгновенно поднимает новый. Если на сайт пришло 100 000 покупателей — он сам удваивает количество серверов, а ночью снижает их до минимума.
+              </p>
+            </div>
+          </div>
+
+          <div class="pitch-card">
+            <div class="pitch-card-header">
+              <div class="pitch-badge">💬 Как продать ценность Managed Kubernetes</div>
+              <button class="copy-btn" title="Скопировать фразу">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Копировать
+              </button>
+            </div>
+            <div class="pitch-quote">
+              «Представьте, что у вас работает 20 микросервисов. Без управляемого Kubernetes ваши дорогостоящие DevOps-инженеры (с зарплатой от 300 000 руб.) тратят 40% рабочего времени на ручную починку серверов и мониторинг. В формате Managed K8s отказоустойчивость инфраструктуры берет на себя дата-центр, а ваши программисты фокусируются на запуске новых фич для клиентов.»
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 5: ХРАНЕНИЕ ДАННЫХ И БЭКАП
+             ================================================================== -->
+        <section class="guide-section" id="sec-5">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">5</div>
+              <div>
+                <h2>Хранение данных и бэкап через ЦОД</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">Блочное, файловое и объектное S3, правило бэкапа 3-2-1, катастрофоустойчивость</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-5" id="mark-btn-sec-5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <h3>Типы хранения данных: матрица для сейла</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Тип хранилища</th>
+                  <th>Что это простыми словами</th>
+                  <th>Типовой сценарий</th>
+                  <th>Скорость</th>
+                  <th>Цена для клиента</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Блочное (Block Storage)</strong></td>
+                  <td>Быстрый системный диск сервера (NVMe / SSD)</td>
+                  <td>Системный диск виртуалки, база данных 1С / PostgreSQL</td>
+                  <td>⚡ Максимальная</td>
+                  <td>💰💰 (Высокая)</td>
+                </tr>
+                <tr>
+                  <td><strong>Файловое (NAS / File)</strong></td>
+                  <td>Общая сетевая папка для сотрудников</td>
+                  <td>Корпоративный файлообменник, проектные документы</td>
+                  <td>🔄 Средняя</td>
+                  <td>💰 (Средняя)</td>
+                </tr>
+                <tr>
+                  <td><strong>Объектное (Object / S3)</strong></td>
+                  <td>Безграничный склад файлов с доступом по API</td>
+                  <td>Резервные копии, видеозаписи, логи, архивы документов</td>
+                  <td>🐢 Низкая</td>
+                  <td>💰 (От 2 ₽/ГБ/мес, сверхдешево)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Rule 3-2-1 -->
+          <h3>Золотой стандарт индустрии: Правило бэкапа «3-2-1»</h3>
+          <div class="card-grid-3">
+            <div class="interactive-card" style="border-top: 4px solid var(--accent-primary);">
+              <span style="font-size: 2rem; font-weight: 800; color: var(--accent-primary);">3</span>
+              <h4 style="margin: 0.5rem 0;">Копии данных</h4>
+              <p style="font-size: 0.85rem;">1 основной рабочий оригинал + как минимум 2 актуальные резервные копии.</p>
+            </div>
+            <div class="interactive-card" style="border-top: 4px solid var(--accent-secondary);">
+              <span style="font-size: 2rem; font-weight: 800; color: var(--accent-secondary);">2</span>
+              <h4 style="margin: 0.5rem 0;">Разных носителя</h4>
+              <p style="font-size: 0.85rem;">Например: локальный сервер на блочном диске + облачное объектное хранилище S3.</p>
+            </div>
+            <div class="interactive-card" style="border-top: 4px solid var(--accent-success);">
+              <span style="font-size: 2rem; font-weight: 800; color: var(--accent-success);">1</span>
+              <h4 style="margin: 0.5rem 0;">Удаленная локация</h4>
+              <p style="font-size: 0.85rem;">Обязательно в другом географическом ЦОД / городе на случай физической аварии.</p>
+            </div>
+          </div>
+
+          <div class="pitch-card">
+            <div class="pitch-card-header">
+              <div class="pitch-badge">💬 Вопрос-крючок для продажи резервного ЦОД</div>
+              <button class="copy-btn" title="Скопировать фразу">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Копировать
+              </button>
+            </div>
+            <div class="pitch-quote">
+              «Подскажите, а где вы сейчас храните бэкапы? На том же самом сервере в офисе? Если ночью сработает вирус-шифровальщик, сломается контроллер дисков или затопит помещение — компания потеряет базу за все годы. Мы предлагаем изолированное S3-хранилище в распределенном дата-центре: стоимость всего от 2 рублей за гигабайт в месяц, а восстановление займет несколько минут.»
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 6: TCO КАЛЬКУЛЯТОР И ЭКОНОМИКА
+             ================================================================== -->
+        <section class="guide-section" id="sec-6">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">6</div>
+              <div>
+                <h2>TCO: Совокупная стоимость владения</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">Главный инструмент закрытия сделки: наглядный интерактивный расчет выгоды</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-6" id="mark-btn-sec-6">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <p>
+            Клиенты мыслят поверхностно: <em>«Сервер у меня уже куплен, место в углу бесплатное, зачем платить дата-центру ежемесячно?»</em>. Побеждает сейл, который умеет разложить <strong>TCO (Total Cost of Ownership) за 3 года</strong>.
+          </p>
+
+          <!-- Interactive Live TCO Calculator Box -->
+          <div class="tco-calculator-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <div>
+                <h3 style="color: var(--accent-secondary); margin-bottom: 4px;">🧮 Интерактивный TCO-Калькулятор (3 года)</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Подвигайте ползунки, чтобы смоделировать экономику реального клиента</p>
+              </div>
+              <span class="tag tag-blue">В реальном времени</span>
+            </div>
+
+            <div class="calc-grid">
+              <!-- Controls Column -->
+              <div class="calc-controls">
+                <div class="control-group">
+                  <label for="calc-servers">
+                    <span>Количество серверов клиента:</span>
+                    <span class="control-val" id="val-servers">2 шт.</span>
+                  </label>
+                  <input type="range" class="slider-input" id="calc-servers" min="1" max="15" value="2" step="1">
+                </div>
+
+                <div class="control-group">
+                  <label for="calc-server-cost">
+                    <span>Стоимость 1 сервера (Capex):</span>
+                    <span class="control-val" id="val-server-cost">600 000 ₽</span>
+                  </label>
+                  <input type="range" class="slider-input" id="calc-server-cost" min="300000" max="1500000" value="600000" step="50000">
+                </div>
+
+                <div class="control-group">
+                  <label for="calc-rent">
+                    <span>Аренда серверной в офисе / мес:</span>
+                    <span class="control-val" id="val-rent">10 000 ₽/мес</span>
+                  </label>
+                  <input type="range" class="slider-input" id="calc-rent" min="0" max="50000" value="10000" step="2000">
+                </div>
+
+                <div class="control-group">
+                  <label for="calc-power">
+                    <span>Счёт за электричество в офисе / мес:</span>
+                    <span class="control-val" id="val-power">12 000 ₽/мес</span>
+                  </label>
+                  <input type="range" class="slider-input" id="calc-power" min="5000" max="50000" value="12000" step="1000">
+                </div>
+
+                <div class="control-group">
+                  <label for="calc-admin">
+                    <span>Зарплата штатного системного инженера:</span>
+                    <span class="control-val" id="val-admin">150 000 ₽/мес</span>
+                  </label>
+                  <input type="range" class="slider-input" id="calc-admin" min="80000" max="300000" value="150000" step="10000">
+                </div>
+
+                <div class="control-group">
+                  <label for="calc-downtime">
+                    <span>Стоимость 1 часа простоя бизнеса:</span>
+                    <span class="control-val" id="val-downtime">150 000 ₽/час</span>
+                  </label>
+                  <input type="range" class="slider-input" id="calc-downtime" min="50000" max="600000" value="150000" step="25000">
+                </div>
+              </div>
+
+              <!-- Output Results Column -->
+              <div class="calc-results">
+                <div>
+                  <div class="comparison-columns">
+                    <div class="comp-box onprem">
+                      <div class="comp-title">🏢 Своя серверная (3 года)</div>
+                      <div class="comp-amount" id="tco-onprem-total">4 418 000 ₽</div>
+                      <div style="font-size: 0.75rem; color: #f87171; margin-top: 4px;">Скрытые траты на ремонт, свет и сбои</div>
+                    </div>
+
+                    <div class="comp-box colo">
+                      <div class="comp-title">🚀 Colocation в ЦОД (3 года)</div>
+                      <div class="comp-amount" id="tco-colo-total">2 448 000 ₽</div>
+                      <div style="font-size: 0.75rem; color: #34d399; margin-top: 4px;">Всё включено + SLA 99.98%</div>
+                    </div>
+                  </div>
+
+                  <div class="savings-banner">
+                    <div class="savings-pct" id="tco-savings-pct">−45%</div>
+                    <div class="savings-desc" id="tco-savings-rub">Экономия: 1 970 000 ₽</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 6px;">Чистая экономия бюджета компании за 3 года владения</div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px dashed var(--border-subtle); padding-top: 0.75rem;">
+                  💡 <em>В расчет включены затраты на ИБП, 2 независимых интернет-канала, прецизионный климат, обслуживание железа сисадмином и финансовые риски аварий.</em>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Canonical Comparison Table -->
+          <h3>Классический кейс расчета TCO (2 сервера, 3 года)</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Статья расходов</th>
+                  <th style="text-align: right;">Своя серверная (3 года)</th>
+                  <th style="text-align: right;">Colocation в ЦОД (3 года)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Серверы (2 шт.)</td>
+                  <td style="text-align: right;">1 200 000 ₽</td>
+                  <td style="text-align: right;">1 200 000 ₽</td>
+                </tr>
+                <tr>
+                  <td>Серверная комната (аренда площади + ремонт)</td>
+                  <td style="text-align: right;">360 000 ₽</td>
+                  <td style="text-align: right; color: var(--text-muted);">—</td>
+                </tr>
+                <tr>
+                  <td>Электроэнергия коммерческая (24/7)</td>
+                  <td style="text-align: right;">432 000 ₽</td>
+                  <td style="text-align: right; color: var(--accent-success);">Включено</td>
+                </tr>
+                <tr>
+                  <td>Охлаждение (кондиционеры + сервис фреона)</td>
+                  <td style="text-align: right;">180 000 ₽</td>
+                  <td style="text-align: right; color: var(--accent-success);">Включено</td>
+                </tr>
+                <tr>
+                  <td>ИБП + батареи + дизель-генератор</td>
+                  <td style="text-align: right;">350 000 ₽</td>
+                  <td style="text-align: right; color: var(--accent-success);">Включено</td>
+                </tr>
+                <tr>
+                  <td>Интернет (2 независимых оператора)</td>
+                  <td style="text-align: right;">216 000 ₽</td>
+                  <td style="text-align: right;">108 000 ₽ (пиринг)</td>
+                </tr>
+                <tr>
+                  <td>Аренда стойко-места в дата-центре</td>
+                  <td style="text-align: right; color: var(--text-muted);">—</td>
+                  <td style="text-align: right;">540 000 ₽</td>
+                </tr>
+                <tr>
+                  <td>Сисадмин (доля ЗП на возню с кабелями и климатом)</td>
+                  <td style="text-align: right;">1 080 000 ₽</td>
+                  <td style="text-align: right;">540 000 ₽</td>
+                </tr>
+                <tr>
+                  <td>Цена простоя (в среднем 1 инцидент в год × 4 часа)</td>
+                  <td style="text-align: right; color: var(--accent-danger);">600 000 ₽</td>
+                  <td style="text-align: right;">60 000 ₽ (SLA)</td>
+                </tr>
+                <tr class="highlight-row">
+                  <td><strong>ИТОГО</strong></td>
+                  <td style="text-align: right; font-size: 1.05rem;"><strong>4 418 000 ₽</strong></td>
+                  <td style="text-align: right; font-size: 1.05rem; color: var(--accent-success);"><strong>2 448 000 ₽</strong></td>
+                </tr>
+                <tr class="savings-row">
+                  <td><strong>ЧИСТАЯ ЭКОНОМИЯ</strong></td>
+                  <td colspan="2" style="text-align: right; font-size: 1.15rem;"><strong>−45% (Экономия 1 970 000 ₽)</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pitch-card">
+            <div class="pitch-card-header">
+              <div class="pitch-badge">💬 Золотая фраза-закрытие по TCO</div>
+              <button class="copy-btn" title="Скопировать фразу">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Копировать
+              </button>
+            </div>
+            <div class="pitch-quote">
+              «За 3 года эксплуатации вы экономите почти 2 миллиона рублей живых денег — и при этом получаете юридический SLA 99.98% с финансовой ответственностью, чего офисная серверная в подвале не обеспечит никогда.»
+            </div>
+          </div>
+
+          <!-- When Datacenter is NOT Profitable -->
+          <div style="background: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--accent-warning); padding: 1.25rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 1.5rem;">
+            <h4 style="color: var(--accent-warning); margin-bottom: 0.5rem;">⚠️ Честность сейла = доверие клиента: когда ЦОД НЕ выгоден</h4>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-left: 1.25rem; line-height: 1.6;">
+              <li><strong>У клиента всего 1 маломощный сервер</strong> — покупка и перевозка не окупятся, сразу предлагайте IaaS (виртуальный сервер в облаке).</li>
+              <li><strong>Требования гостайны:</strong> закон обязывает держать железо строго на режимном объекте за колючей проволокой.</li>
+              <li><strong>Клиент только что сделал капитальный ремонт своей серверной:</strong> не уговаривайте бросить её, предложите дата-центр как <em>резервную гео-распределенную площадку</em>.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 7: СКРИПТЫ ПРОДАЖ
+             ================================================================== -->
+        <section class="guide-section" id="sec-7">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">7</div>
+              <div>
+                <h2>Скрипты продаж и работа с возражениями</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">Скрипт холодного/теплого звонка и отработка 5 ключевых возражений</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-7" id="mark-btn-sec-7">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <h3>Скрипт первого контакта (Квалификация)</h3>
+          <div class="pitch-card" style="border-left-color: var(--accent-secondary);">
+            <div class="pitch-card-header">
+              <div class="pitch-badge" style="color: var(--accent-secondary);">📞 Первый звонок: корпоративные решения Т2</div>
+              <button class="copy-btn" title="Скопировать скрипт">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Копировать
+              </button>
+            </div>
+            <div class="pitch-quote">
+              «[Имя клиента], добрый день! Это [Ваше Имя], компания Т2, направление корпоративных ИТ-инфраструктурных решений.<br><br>
+              Мы сейчас активно работаем с компаниями вашей отрасли [например, ритейл / производство] и помогаем оптимизировать расходы на серверные мощности и защитить бизнес от аварийных простоев.<br><br>
+              Подскажите, пожалуйста, у вас сейчас серверы физически стоят в офисе или вы уже арендуете мощности в коммерческом дата-центре или облаке?»
+            </div>
+          </div>
+
+          <!-- Objection Battle Table -->
+          <h3>5 главных возражений и идеальные контраргументы</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Возражение клиента</th>
+                  <th>Скрипт ответа сейла</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>«У нас всё в облаке»</strong></td>
+                  <td>«Отлично, облако дает гибкость! А где вы храните бэкапы? Хранить резервные копии в том же облаке — высокий риск. Также при стабильной нагрузке Colocation на своем железе может быть в 2 раза выгоднее виртуалок. Давайте сравним чеки?»</td>
+                </tr>
+                <tr>
+                  <td><strong>«У нас свой сисадмин, он со всем справляется»</strong></td>
+                  <td>«Он отличный специалист. А что произойдет, если в субботу ночью отключится свет или выйдет из строя вентилятор, а сисадмин в отпуске за городом? В ЦОД дежурная смена инженеров на месте 24/7/365, они заменят диск за 15 минут по регламенту SLA.»</td>
+                </tr>
+                <tr>
+                  <td><strong>«Дорого»</strong></td>
+                  <td>«Давайте сравним совокупную стоимость владения (TCO) за 3 года. Часто клиенты не учитывают промышленное кондиционирование, тариф за свет и стоимость часа простоя. Я составлю для вас расчет за 1 рабочий день — это бесплатно и ни к чему не обязывает.»</td>
+                </tr>
+                <tr>
+                  <td><strong>«Мы слишком маленькие, нам это не нужно»</strong></td>
+                  <td>«Как раз для небольших компаний есть формат поюнитного размещения от 1U. А если данных совсем немного — идеален IaaS (виртуальный сервер без покупки железа). Давайте подберем вариант под ваш бюджет?»</td>
+                </tr>
+                <tr>
+                  <td><strong>«Данные нельзя отдавать наружу (СБ против)»</strong></td>
+                  <td>«При Colocation данные физически хранятся на ваших серверах, к которым у персонала ЦОД нет доступа. Стойка запирается на ключ со СКУД. Сам дата-центр аттестован по ФЗ-152 (УЗ-1) и 187-ФЗ (КИИ) — требования безопасности соблюдены на высшем уровне.»</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 8: ЧЕК-ЛИСТ КВАЛИФИКАЦИИ
+             ================================================================== -->
+        <section class="guide-section" id="sec-8">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">8</div>
+              <div>
+                <h2>Интерактивный чек-лист квалификации клиента</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">9 обязательных вопросов перед отправкой КП на ЦОД и расчетом мощностей</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-8" id="mark-btn-sec-8">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <p>
+            Никогда не готовьте коммерческое предложение вслепую. Задайте эти вопросы на встрече или созвоне, отмечая пункты галочками:
+          </p>
+
+          <div class="checklist-container">
+            <div class="checklist-actions">
+              <span class="tag tag-blue" id="checklist-counter-badge">0 / 9 пройдено</span>
+              <div style="display: flex; gap: 8px;">
+                <button class="copy-btn" id="copy-checklist-crm">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                  Скопировать для CRM
+                </button>
+                <button class="copy-btn" id="reset-checklist" style="color: var(--accent-danger);">
+                  Сбросить
+                </button>
+              </div>
+            </div>
+
+            <div id="checklist-items-wrap">
+              <!-- Dynamically populated by JS initChecklist() -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 9: РОАДМАП ОБУЧЕНИЯ
+             ================================================================== -->
+        <section class="guide-section" id="sec-9">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <div class="section-number">9</div>
+              <div>
+                <h2>Что изучить дальше (Роадмап сейла)</h2>
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-muted);">Пошаговый план прокачки: от новичка до ведущего эксперта по B2B-инфраструктуре</p>
+              </div>
+            </div>
+            <button class="section-mark-btn" data-section="sec-9" id="mark-btn-sec-9">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Отметить изученным
+            </button>
+          </div>
+
+          <h3 style="color: var(--accent-primary);">⚡ Приоритет 1: Фундамент (за первые 1–2 недели)</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Тема</th>
+                  <th>Рекомендуемый ресурс</th>
+                  <th>Формат и время</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Как устроен дата-центр изнутри</strong></td>
+                  <td>YouTube: Экскурсия по дата-центру Selectel / DataLine</td>
+                  <td>Видео (15 минут)</td>
+                </tr>
+                <tr>
+                  <td><strong>IaaS vs PaaS vs SaaS</strong></td>
+                  <td>YouTube: Разбор архитектуры облаков простыми словами</td>
+                  <td>Видео (10 минут)</td>
+                </tr>
+                <tr>
+                  <td><strong>Что такое Colocation и стойки</strong></td>
+                  <td>Блог Selectel / Хабр: «Colocation — гид для нетехнарей»</td>
+                  <td>Статья (12 минут чтения)</td>
+                </tr>
+                <tr>
+                  <td><strong>Методика расчета TCO</strong></td>
+                  <td>Калькуляторы TCO Selectel / CloudMTS</td>
+                  <td>Интерактивная практика</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="color: var(--accent-secondary); margin-top: 1.5rem;">🚀 Приоритет 2: Расширение кругозора (в течение 1 месяца)</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Тема</th>
+                  <th>Рекомендуемый ресурс</th>
+                  <th>Формат</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Kubernetes для нетехнарей</strong></td>
+                  <td>YouTube: «Kubernetes за 15 минут с анимацией»</td>
+                  <td>Видео</td>
+                </tr>
+                <tr>
+                  <td><strong>Объектное хранилище S3</strong></td>
+                  <td>Официальная документация Yandex Cloud Object Storage</td>
+                  <td>Статья</td>
+                </tr>
+                <tr>
+                  <td><strong>AI Inference & GPU-as-a-Service</strong></td>
+                  <td>Хабр: «Зачем бизнесу аренда GPU и локальные LLM»</td>
+                  <td>Аналитическая статья</td>
+                </tr>
+                <tr>
+                  <td><strong>ФЗ-152 и безопасность ПДн</strong></td>
+                  <td>Хабр: «ФЗ-152 и требования к ЦОД простым языком»</td>
+                  <td>Гайд для юристов и сейлов</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="color: var(--accent-success); margin-top: 1.5rem;">🏆 Приоритет 3: Экспертный уровень</h3>
+          <div class="card-grid-3">
+            <div class="interactive-card">
+              <h4>Docker и контейнеры</h4>
+              <p style="font-size: 0.85rem;">Бесплатный вводный интерактивный курс по контейнеризации на Stepik.</p>
+            </div>
+            <div class="interactive-card">
+              <h4>Сетевые основы (VLAN, BGP)</h4>
+              <p style="font-size: 0.85rem;">Канал NetworkChuck: основы сетей, пиринга и протоколов маршрутизации.</p>
+            </div>
+            <div class="interactive-card">
+              <h4>Сертификация облака</h4>
+              <p style="font-size: 0.85rem;">Бесплатные курсы в «Yandex Cloud Учебнике» для понимания архитектуры.</p>
+            </div>
+          </div>
+
+          <!-- Final Sales Wisdom Banner -->
+          <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(16, 185, 129, 0.15)); border: 1px solid var(--accent-primary); border-radius: var(--radius-lg); padding: 1.75rem; margin-top: 2rem;">
+            <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+              💎 Главный секрет успешного сейла в ЦОД
+            </h3>
+            <p style="font-size: 1rem; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+              Вам не нужно становиться системным архитектором или инженером сетей. Ваша миссия в B2B — <strong>задать правильные квалификационные вопросы</strong>, <strong>показать выгоду в деньгах (TCO)</strong> и вовремя <strong>подключить пресейл-инженера</strong> для составления точной спецификации. Уверенное владение терминами + умение считать экономику заказчика дают 80% успеха в сделках по ЦОД.
+            </p>
+          </div>
+        </section>
+
+      </div> <!-- /#tab-guide -->
+
+
+      <!-- ====================================================================
+           MODE 2: FLASHCARDS (ФЛЕШ-КАРТОЧКИ)
+           ==================================================================== -->
+      <div class="tab-panel" id="tab-flashcards">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 1.5rem;">
+          <h2>Интерактивные карточки для запоминания</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Нажмите на карточку (или клавишу <kbd style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px;">Пробел</kbd>), чтобы перевернуть её и проверить себя. Стрелки <kbd>←</kbd> и <kbd>→</kbd> для навигации.
+          </p>
+        </div>
+
+        <div class="flashcards-container">
+          <div class="flashcard-header">
+            <span class="fc-category-badge" id="fc-category">1. Модели облаков</span>
+            <span id="fc-status-badge" class="tag tag-amber">На изучении</span>
+            <span style="font-family: var(--font-mono); font-weight: 700; color: var(--text-secondary);" id="fc-counter">1 / 15</span>
+          </div>
+
+          <!-- Flip Card Stage -->
+          <div class="flashcard-stage" id="fc-stage">
+            <div class="flashcard-card" id="fc-card">
+              <!-- Front Face (Question) -->
+              <div class="flashcard-face front">
+                <span class="card-hint">❓ ВОПРОС ДЛЯ ПРОВЕРКИ</span>
+                <div class="card-question" id="fc-question">Что такое Colocation и чем он отличается от IaaS?</div>
+                <div class="card-flip-prompt">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                  Кликните, чтобы увидеть ответ
+                </div>
+              </div>
+
+              <!-- Back Face (Answer) -->
+              <div class="flashcard-face back">
+                <span class="card-hint" style="color: var(--accent-secondary);">💡 ЭТАЛОННЫЙ ОТВЕТ</span>
+                <div class="card-answer" id="fc-answer">
+                  Ответ загружается...
+                </div>
+                <div class="card-flip-prompt">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                  Кликните, чтобы вернуться к вопросу
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flashcard Controls -->
+          <div class="flashcard-controls">
+            <button class="fc-btn fc-btn-prev" id="fc-prev" title="Предыдущая карточка (Стрелка влево)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+              Назад
+            </button>
+            <button class="fc-btn fc-btn-again" id="fc-again">
+              Повторить ещё
+            </button>
+            <button class="fc-btn fc-btn-know" id="fc-know">
+              ✓ Знаю отлично
+            </button>
+            <button class="fc-btn fc-btn-next" id="fc-next" title="Следующая карточка (Стрелка вправо)">
+              Вперед
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div> <!-- /#tab-flashcards -->
+
+
+      <!-- ====================================================================
+           MODE 3: OBJECTIONS TRAINER (ТРЕНАЖЁР ВОЗРАЖЕНИЙ)
+           ==================================================================== -->
+      <div class="tab-panel" id="tab-objections">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto 2rem;">
+          <h2>Тренажёр отработки возражений клиентов</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Прочитайте реплику клиента, сформулируйте свой ответ вслух, затем нажмите кнопку проверки, чтобы сравнить с эталонным скриптом.
+          </p>
+        </div>
+
+        <div class="trainer-container" id="objections-list">
+          <!-- Dynamically populated by JS initObjectionTrainer() -->
+        </div>
+      </div> <!-- /#tab-objections -->
+
+
+      <!-- ====================================================================
+           MODE 4: CALL CHEAT-SHEET (ШПАРГАЛКА НА ЗВОНОК)
+           ==================================================================== -->
+      <div class="tab-panel" id="tab-cheatsheet">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <h2>Экспресс-шпаргалка для активного звонка</h2>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.85rem;">Держите эту вкладку открытой на втором экране во время звонка клиенту</p>
+          </div>
+          <button class="copy-btn" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect width="12" height="8" x="6" y="14"></rect></svg>
+            Распечатать / PDF
+          </button>
+        </div>
+
+        <div class="cheat-sheet-grid">
+          <!-- Card 1: Numbers & Specs -->
+          <div class="cheat-card">
+            <h3>🔢 Ключевые цифры и стандарты</h3>
+            <ul class="cheat-metric-list">
+              <li class="cheat-metric-item">
+                <span>Высота 1U:</span>
+                <strong>44.45 мм (4.4 см)</strong>
+              </li>
+              <li class="cheat-metric-item">
+                <span>Стандартная стойка:</span>
+                <strong>42U (до 20 серверов)</strong>
+              </li>
+              <li class="cheat-metric-item">
+                <span>Мощность на стойку:</span>
+                <strong>3–10 кВт</strong>
+              </li>
+              <li class="cheat-metric-item">
+                <span>SLA Tier III Uptime:</span>
+                <strong>99.982% (1.6 ч/год)</strong>
+              </li>
+              <li class="cheat-metric-item">
+                <span>Резервирование вводов:</span>
+                <strong>2N (два независимых)</strong>
+              </li>
+              <li class="cheat-metric-item">
+                <span>Цена объектного S3:</span>
+                <strong>от 2 ₽ / ГБ / мес</strong>
+              </li>
+              <li class="cheat-metric-item">
+                <span>Экономия по TCO:</span>
+                <strong>до −45% за 3 года</strong>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Discovery Questions -->
+          <div class="cheat-card">
+            <h3>🎯 4 Главных вопроса для старта</h3>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-left: 1.25rem; line-height: 1.6;">
+              <li style="margin-bottom: 6px;">«Где сейчас стоят серверы — в офисе или уже в ЦОД?»</li>
+              <li style="margin-bottom: 6px;">«Сколько серверов и какая суммарная мощность в кВт?»</li>
+              <li style="margin-bottom: 6px;">«Есть ли требования регулятора (ФЗ-152, КИИ, ЦБ)?»</li>
+              <li style="margin-bottom: 6px;">«Где храните бэкапы на случай сбоя или шифровальщика?»</li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Quick Objection Responses -->
+          <div class="cheat-card">
+            <h3>🛡️ Экспресс-ответы на возражения</h3>
+            <div style="font-size: 0.825rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+              <div>
+                <strong style="color: var(--text-primary);">«У нас всё в облаке»</strong><br>
+                → <em>«А бэкапы? Для гео-резерва их держат во 2-м ЦОД. Плюс Colocation в 2 раза дешевле при стабильной нагрузке.»</em>
+              </div>
+              <div>
+                <strong style="color: var(--text-primary);">«Свой сисадмин справляется»</strong><br>
+                → <em>«А если он заболеет или уйдет в отпуск в момент сбоя? В ЦОД дежурная смена 24/7 и замена диска за 15 мин.»</em>
+              </div>
+              <div>
+                <strong style="color: var(--text-primary);">«Слишком дорого»</strong><br>
+                → <em>«Давайте посчитаем TCO: вы платите за кондиционер, свет и простой. Стойка окупается на 40% за 3 года.»</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Magic Closing Formula -->
+          <div class="cheat-card" style="border: 1px solid var(--accent-primary);">
+            <h3 style="color: var(--accent-primary);">⭐ Фраза закрытия на расчет</h3>
+            <p style="font-size: 0.85rem; font-style: italic; color: var(--text-primary); line-height: 1.5; margin: 0;">
+              «Давайте я подготовлю для вас 1-страничную сравнительную таблицу TCO за 3 года с учетом ваших серверов и тарифов. Это бесплатно и займет у нас 1 рабочий день. Согласны посмотреть расчет?»
+            </p>
+          </div>
+        </div>
+      </div> <!-- /#tab-cheatsheet -->
+
+    </main>
+  </div>
+
+  <!-- ========================================================================
+       Global Search Modal (Ctrl + K)
+       ======================================================================== -->
+  <div class="search-modal-backdrop" id="search-modal">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <input type="text" id="search-input" placeholder="Искать термин, возражение, формулу, скрипт... (Esc чтобы закрыть)">
+      </div>
+      <div class="search-results-list" id="search-results">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar (iOS / Android App Style) -->
+  <nav class="mobile-bottom-nav" aria-label="Мобильная навигация">
+    <button class="mobile-nav-item active" data-mode="guide" id="mob-nav-guide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6 6h10"></path><path d="M6 10h10"></path></svg>
+      <span>Учебник</span>
+    </button>
+    <button class="mobile-nav-item" data-mode="flashcards" id="mob-nav-flashcards">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="m9 8 6 4-6 4Z"></path></svg>
+      <span>Карточки</span>
+    </button>
+    <button class="mobile-nav-item" data-mode="objections" id="mob-nav-objections">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      <span>Возражения</span>
+    </button>
+    <button class="mobile-nav-item" data-mode="cheatsheet" id="mob-nav-cheatsheet">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      <span>Шпаргалка</span>
+    </button>
+    <button class="mobile-nav-item" id="mob-nav-toc">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+      <span>Главы</span>
+    </button>
+  </nav>
+
+  <script src="./app.js"></script>
+</body>
+</html>
